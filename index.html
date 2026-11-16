@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UR Wildlife Hunger Games</title>
+  <meta name="description" content="An interactive campus wildlife sustainability game for EcoReps." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">ECOREPS • INTERACTIVE CONCEPT</p>
+      <h1>UR Wildlife Hunger Games</h1>
+    </div>
+    <button id="resetBtn" class="ghost-btn" type="button">Reset game</button>
+  </header>
+
+  <main>
+    <section id="hero" class="panel hero">
+      <div class="hero-copy">
+        <p class="kicker">FOUR SPECIES. ONE CAMPUS.</p>
+        <h2>Same campus.<br><span>Very different odds.</span></h2>
+        <p class="lede">Pick a real Rochester-area animal and try to survive a changing campus. Your choices matter — but the environment shapes which choices are even available.</p>
+        <div class="hero-actions">
+          <button id="startBtn" class="primary-btn" type="button">Enter the games</button>
+          <button id="howBtn" class="secondary-btn" type="button">How it works</button>
+        </div>
+      </div>
+      <div class="hero-grid" aria-hidden="true">
+        <div class="hero-animal">🐦</div><div class="hero-animal">🐿️</div><div class="hero-animal">🐇</div><div class="hero-animal">🦫</div>
+      </div>
+    </section>
+
+    <section id="how" class="panel hidden">
+      <p class="eyebrow">HOW TO PLAY</p>
+      <h2>Survive first. Plan the campus second.</h2>
+      <div class="steps">
+        <article><span>01</span><h3>Pick a species</h3><p>Each team has a different winter strategy and a different vulnerability.</p></article>
+        <article><span>02</span><h3>Choose your move</h3><p>You make a simple choice before knowing which campus hazard is coming.</p></article>
+        <article><span>03</span><h3>Reveal the hazard</h3><p>Windows, traffic, lawn treatment, and construction do not affect every species equally.</p></article>
+        <article><span>04</span><h3>Become planners</h3><p>Spend limited sustainability credits. You cannot solve every problem at once.</p></article>
+      </div>
+      <button class="primary-btn next-to-teams" type="button">Choose your animal</button>
+    </section>
+
+    <section id="teams" class="panel hidden">
+      <p class="eyebrow">ROUND 1 • CHOOSE YOUR TEAM</p>
+      <h2>Who are you surviving as?</h2>
+      <p class="section-intro">Split the room into four teams, or let each person choose. Click a card to begin.</p>
+      <div class="team-grid">
+        <button class="team-card" data-team="bird" type="button"><span class="emoji">🐦</span><span class="team-letter">TEAM A</span><strong>Dark-eyed Junco</strong><small>THE SNOWBIRD</small><p>A winter visitor searching for food, cover, and a safe place to land.</p></button>
+        <button class="team-card" data-team="squirrel" type="button"><span class="emoji">🐿️</span><span class="team-letter">TEAM B</span><strong>Eastern Gray Squirrel</strong><small>THE HOARDER</small><p>A year-round resident trying to reach the nuts it cached before winter.</p></button>
+        <button class="team-card" data-team="rabbit" type="button"><span class="emoji">🐇</span><span class="team-letter">TEAM C</span><strong>Eastern Cottontail</strong><small>THE GRAZER</small><p>Still active all winter, balancing food access with shelter and exposure.</p></button>
+        <button class="team-card" data-team="groundhog" type="button"><span class="emoji">🦫</span><span class="team-letter">TEAM D</span><strong>Groundhog</strong><small>THE SLEEPER</small><p>Build enough reserves, secure a burrow, and disappear underground.</p></button>
+      </div>
+    </section>
+
+    <section id="mission" class="panel hidden">
+      <div class="mission-head"><div id="missionEmoji" class="mission-emoji">🐦</div><div><p id="missionTeam" class="eyebrow">TEAM A</p><h2 id="missionName">Dark-eyed Junco</h2><p id="missionSubtitle" class="section-intro"></p></div></div>
+      <div class="mission-layout">
+        <article class="mission-box"><p class="box-label">YOUR MISSION</p><h3 id="missionGoal"></h3><p id="missionContext"></p></article>
+        <article class="choice-box"><p class="box-label">MAKE YOUR MOVE</p><h3 id="choicePrompt"></h3><div id="choices" class="choices"></div></article>
+      </div>
+    </section>
+
+    <section id="hazard" class="panel hidden">
+      <p class="eyebrow">EVENT CARD</p><div id="hazardIcon" class="hazard-icon">🪟</div><h2 id="hazardTitle">GLASS FACADE</h2><p id="hazardStory" class="hazard-story"></p>
+      <div class="outcome-card"><p class="box-label">WHAT YOUR CHOICE MEANS</p><h3 id="outcomeTitle"></h3><p id="outcomeText"></p></div>
+      <div class="science-card"><p class="box-label">REAL ECOLOGY CONNECTION</p><p id="scienceText"></p></div>
+      <button id="plannerBtn" class="primary-btn" type="button">Become the campus planners</button>
+      <button id="anotherBtn" class="secondary-btn" type="button">Try another animal</button>
+    </section>
+
+    <section id="planner" class="panel hidden">
+      <p class="eyebrow">FINAL BOSS • CAMPUS PLANNING</p><h2>You have <span id="credits">4</span> sustainability credits.</h2>
+      <p class="section-intro">Pick interventions. Your budget is limited, and every intervention helps a different mix of species.</p>
+      <div id="interventions" class="intervention-grid"></div>
+      <div class="budget-bar"><div><span>Spent</span><strong><span id="spent">0</span> / 4</strong></div><button id="evaluateBtn" class="primary-btn" type="button">Evaluate my plan</button></div>
+    </section>
+
+    <section id="results" class="panel hidden">
+      <p class="eyebrow">PLANNER DEBRIEF</p><h2>Who benefited from your plan?</h2><div id="resultGrid" class="result-grid"></div>
+      <div class="takeaway"><p class="box-label">THE TAKEAWAY</p><h3>A sustainable campus is not one thing to every species.</h3><p>A window, lawn, road, or construction site can be ordinary infrastructure to humans while changing food, shelter, movement, or collision risk for wildlife. Sustainability is partly about asking: <strong>who benefits, who is exposed, and who gets left out?</strong></p></div>
+      <button id="playAgainBtn" class="primary-btn" type="button">Play again</button>
+    </section>
+
+    <section id="sources" class="panel sources-panel">
+      <details><summary>Science notes & sources</summary>
+        <p>This is a simplified educational simulation. Game choices, credits, “energy,” and outcomes are invented for discussion and are <strong>not</strong> wildlife survival probabilities or measurements of the University of Rochester campus.</p>
+        <ul>
+          <li><a href="https://www.allaboutbirds.org/news/why-birds-hit-windows-and-how-you-can-help-prevent-it/" target="_blank" rel="noreferrer">Cornell Lab of Ornithology — Why birds hit windows</a></li>
+          <li><a href="https://www.epa.gov/safepestcontrol/tips-reducing-pesticide-impacts-wildlife" target="_blank" rel="noreferrer">U.S. EPA — Reducing pesticide impacts on wildlife</a></li>
+          <li><a href="https://extension.psu.edu/managing-habitat-for-eastern-cottontails" target="_blank" rel="noreferrer">Penn State Extension — Eastern cottontail habitat</a></li>
+          <li><a href="https://s3.amazonaws.com/assets.cce.cornell.edu/attachments/23175/Woodchucks-2012.pdf" target="_blank" rel="noreferrer">Cornell Cooperative Extension — Woodchucks</a></li>
+          <li><a href="https://www.nyc.gov/site/wildlifenyc/animals/eastern-gray-squirrels.page" target="_blank" rel="noreferrer">NYC Wildlife — Eastern gray squirrels</a></li>
+        </ul>
+      </details>
+    </section>
+  </main>
+  <footer><p>EcoReps concept • UR Wildlife Hunger Games • Educational game prototype</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
